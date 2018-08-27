@@ -1,0 +1,29 @@
+<header class="navbar navbar-expand-md fixed-top bg-dark">
+  <div class="container">
+    <%= link_to "sample app", root_path, id: "logo", class: "btn btn-primary btn-outline-primary text-white" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Home", home_path, class: "btn btn-primary btn-outline-primary text-white", style: "margin: 2px" %></li>
+        <li><%= link_to "Help", help_path, class: "btn btn-primary btn-outline-primary text-white", style: "margin: 2px" %></li>
+        <% if logged_in? %>
+          <li><%= link_to "Users", users_path, class: "btn btn-primary btn-outline-primary text-white", style: "margin: 2px" %></li>
+          <li class="dropdown">
+            <a href="#" class="btn btn-primary btn-outline-primary text-white dropdown-toggle", style="margin: 2px" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Account <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <li class="dropdown-item"><%= link_to "Profile", current_user %></li>
+              <li class="dropdown-item"><%= link_to "Settings", edit_user_path(current_user) %>
+              <li class="dropdown-divider"></li>
+              <li class="dropdown-item">
+                <%= link_to "Log out", logout_path, method: :delete %>
+              </li>
+            </ul>
+          </li>
+          <% else %>
+          <li><%= link_to "Log in", login_path, class: "btn btn-primary btn-outline-primary text-white", style: "margin: 2px" %></li>
+          <% end %>
+      </ul>
+    </nav>
+  </div>
+</header>
